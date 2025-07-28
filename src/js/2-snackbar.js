@@ -35,5 +35,6 @@ refs.form.addEventListener('submit', e => {
         progressBar: false,
       })
     );
+
   refs.form.reset();
 });
