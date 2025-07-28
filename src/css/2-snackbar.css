@@ -54,18 +54,18 @@ input[type='radio'] {
 .radio-label {
   /* margin-top: 24px; */
   display: flex;
-  gap: 14px;
+  gap: 12px;
   /* justify-content: center; */
   align-items: center;
 }
 
 fieldset {
-  padding-bottom: 8px;
+  padding-bottom: 14px;
   /* padding-top: 24px; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 48px;
+  gap: 53px;
   height: 78px;
   border: 1px solid #808080;
   border-radius: 4px;
@@ -79,7 +79,7 @@ fieldset:hover {
 legend {
   padding: 0 6px;
   border-color: #fff;
-  text-align: left;
+  margin-left: 22px;
 }
 
 .submit-btn {
