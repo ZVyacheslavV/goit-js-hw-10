@@ -95,6 +95,3 @@ function updateTimer() {
 function addLeadingZero(val) {
   return `${val}`.padStart(2, 0);
 }
-
-//test5
-('');
