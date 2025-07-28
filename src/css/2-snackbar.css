@@ -15,12 +15,34 @@
   border: 1px solid #808080;
   border-radius: 4px;
   height: 40px;
+  outline: none;
+  padding: 8px 16px;
+}
+
+/* Ховаємо стандартні стрілки */
+/* .number-input input[type='number']::-webkit-inner-spin-button,
+.number-input input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.number-input input[type='number'] {
+  -moz-appearance: textfield;
+  text-align: center;
+  width: 60px;
+  font-size: 18px;
+} */
+
+.number-input:hover {
+  border-color: #000;
+}
+
+.number-input:active {
+  border-color: #4e75ff;
 }
 
 input[type='radio'] {
   width: 20px;
   height: 20px;
-  /* margin-right: 8px; */
 }
 
 .form label:first-child {
@@ -30,22 +52,34 @@ input[type='radio'] {
 }
 
 .radio-label {
+  /* margin-top: 24px; */
   display: flex;
-  gap: 8px;
+  gap: 14px;
   /* justify-content: center; */
   align-items: center;
 }
 
-.form fieldset {
-  text-align: center;
-  /* padding: 44px auto 8px auto; */
+fieldset {
+  padding-bottom: 8px;
+  /* padding-top: 24px; */
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   gap: 48px;
   height: 78px;
   border: 1px solid #808080;
   border-radius: 4px;
+  min-height: 0;
+}
+
+fieldset:hover {
+  border-color: #000;
+}
+
+legend {
+  padding: 0 6px;
+  border-color: #fff;
+  text-align: left;
 }
 
 .submit-btn {
@@ -63,4 +97,8 @@ input[type='radio'] {
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #fff;
+}
+
+.submit-btn:hover {
+  background-color: #6c8cff;
 }
