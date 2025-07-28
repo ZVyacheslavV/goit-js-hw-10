@@ -1,60 +1,66 @@
-/* .feedback-form {
-  max-width: 408px;
-  padding: 24px;
+.form {
+  margin: 32px;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
-.login-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
+.form label {
+  line-height: 1.5;
   letter-spacing: 0.04em;
 }
 
-.login-input {
-  height: 40px;
+.number-input {
   border: 1px solid #808080;
   border-radius: 4px;
   height: 40px;
-  width: 100%;
-  padding: 8px 16px;
-
-  outline: none;
 }
 
-.login-input::placeholder {
-  letter-spacing: 0.04em;
-  color: transparent;
+input[type='radio'] {
+  width: 20px;
+  height: 20px;
+  /* margin-right: 8px; */
 }
 
-.login-input:hover,
-.login-input:focus {
-  border: 1px solid #000;
+.form label:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.login-input:active::placeholder {
-  color: #2e2f42;
+.radio-label {
+  display: flex;
+  gap: 8px;
+  /* justify-content: center; */
+  align-items: center;
 }
 
-.login-submit-btn {
+.form fieldset {
+  text-align: center;
+  /* padding: 44px auto 8px auto; */
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 48px;
+  height: 78px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+
+.submit-btn {
   margin-top: 8px;
-  max-width: 95px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  max-width: 360px;
+  width: 100%;
   height: 40px;
-  border-style: none;
+  background-color: #4e75ff;
+  border: none;
 
   font-weight: 500;
+
+  line-height: 1.5;
   letter-spacing: 0.04em;
   color: #fff;
-
-  border-radius: 8px;
-
-  background-color: #4e75ff;
 }
-
-.login-submit-btn:hover {
-  background-color: #6c8cff;
-}
- */
