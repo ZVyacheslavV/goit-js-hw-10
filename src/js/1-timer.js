@@ -26,6 +26,7 @@ const options = {
 
     if (userSelectedDate > new Date()) {
       refs.startBtn.classList.add('active');
+      refs.startBtn.disabled = false;
     } else {
       iziToast.error({
         message: 'Please choose a date in the future',
@@ -34,6 +35,7 @@ const options = {
         progressBar: false,
       });
       refs.startBtn.classList.remove('active');
+      refs.startBtn.disabled = true;
     }
   },
 };
@@ -43,11 +45,14 @@ flatpickr(refs.inputDate, options);
 
 //Init countdown
 refs.startBtn.addEventListener('click', () => {
-  if (refs.startBtn.classList.contains('active')) {
-    refs.startBtn.classList.remove('active');
-    updateTimer();
-    countdown = setInterval(updateTimer, 1000);
-  }
+  if (countdown) return;
+
+  refs.startBtn.classList.remove('active');
+  refs.startBtn.disabled = true;
+  refs.inputDate.disabled = true;
+
+  updateTimer();
+  countdown = setInterval(updateTimer, 1000);
 });
 
 //FUNCTIONS:
@@ -82,7 +87,6 @@ function updateTimer() {
   }
 
   const remaining = convertMs(delta);
-  refs.inputDate.disabled = true;
 
   //Changing online display countdown
   refs.outputDays.textContent = addLeadingZero(remaining.days);
