@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "vite build --base=/goit-js-hw-10/",
     "preview": "vite preview",
-    "push": "sh -c 'git add . && git commit -m \"$@\" && git push' --"
+    "push": "node scripts/push.js"
   },
   "devDependencies": {
     "glob": "^11.0.0",
