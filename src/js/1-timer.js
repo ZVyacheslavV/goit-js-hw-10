@@ -86,13 +86,13 @@ function updateTimer() {
     return;
   }
 
-  const remaining = convertMs(delta);
+  const { days, hours, minutes, seconds } = convertMs(delta);
 
   //Changing online display countdown
-  refs.outputDays.textContent = addLeadingZero(remaining.days);
-  refs.outputHours.textContent = addLeadingZero(remaining.hours);
-  refs.outputMinutes.textContent = addLeadingZero(remaining.minutes);
-  refs.outputSeconds.textContent = addLeadingZero(remaining.seconds);
+  refs.outputDays.textContent = addLeadingZero(days);
+  refs.outputHours.textContent = addLeadingZero(hours);
+  refs.outputMinutes.textContent = addLeadingZero(minutes);
+  refs.outputSeconds.textContent = addLeadingZero(seconds);
 }
 
 //Adding zeroes for proper displaying
