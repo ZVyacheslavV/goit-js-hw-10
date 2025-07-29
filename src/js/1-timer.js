@@ -25,7 +25,6 @@ const options = {
     userSelectedDate = selectedDates[0];
 
     if (userSelectedDate > new Date()) {
-      refs.startBtn.classList.add('active');
       refs.startBtn.disabled = false;
     } else {
       iziToast.error({
@@ -34,7 +33,6 @@ const options = {
         timeout: 2000,
         progressBar: false,
       });
-      refs.startBtn.classList.remove('active');
       refs.startBtn.disabled = true;
     }
   },
@@ -47,7 +45,6 @@ flatpickr(refs.inputDate, options);
 refs.startBtn.addEventListener('click', () => {
   if (countdown) return;
 
-  refs.startBtn.classList.remove('active');
   refs.startBtn.disabled = true;
   refs.inputDate.disabled = true;
 
