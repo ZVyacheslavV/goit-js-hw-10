@@ -24,7 +24,7 @@ const countdown = {
     refs.inputDate.disabled = true;
 
     const tick = () => {
-      const delta = this.userSelectedDate.getTime() - Date.now();
+      const delta = this.userSelectedDate - Date.now();
 
       if (delta <= 0) {
         clearInterval(this.countdownId);
