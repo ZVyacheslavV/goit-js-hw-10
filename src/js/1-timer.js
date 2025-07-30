@@ -13,8 +13,38 @@ const refs = {
   outputSeconds: document.querySelector('[data-seconds]'),
 };
 
-let userSelectedDate;
-let countdown;
+const countdown = {
+  countdownId: null,
+  userSelectedDate: null,
+
+  start() {
+    if (this.countdownId) return;
+
+    refs.startBtn.disabled = true;
+    refs.inputDate.disabled = true;
+
+    const tick = () => {
+      const delta = this.userSelectedDate.getTime() - Date.now();
+
+      if (delta <= 0) {
+        clearInterval(this.countdownId);
+        this.countdownId = null;
+        refs.inputDate.disabled = false;
+        return;
+      }
+
+      //Changing online display countdown
+      const { days, hours, minutes, seconds } = convertMs(delta);
+      refs.outputDays.textContent = addLeadingZero(days);
+      refs.outputHours.textContent = addLeadingZero(hours);
+      refs.outputMinutes.textContent = addLeadingZero(minutes);
+      refs.outputSeconds.textContent = addLeadingZero(seconds);
+    };
+
+    tick();
+    this.countdownId = setInterval(tick, 1000);
+  },
+};
 
 const options = {
   enableTime: true,
@@ -22,9 +52,9 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    userSelectedDate = selectedDates[0];
+    countdown.userSelectedDate = selectedDates[0];
 
-    if (userSelectedDate > new Date()) {
+    if (countdown.userSelectedDate > new Date()) {
       refs.startBtn.disabled = false;
     } else {
       iziToast.error({
@@ -41,18 +71,12 @@ const options = {
 //Date choosing
 flatpickr(refs.inputDate, options);
 
-//Init countdown
+//Start countdown
 refs.startBtn.addEventListener('click', () => {
-  if (countdown) return;
-
-  refs.startBtn.disabled = true;
-  refs.inputDate.disabled = true;
-
-  updateTimer();
-  countdown = setInterval(updateTimer, 1000);
+  countdown.start();
 });
 
-//FUNCTIONS:
+//Functions:
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -70,26 +94,6 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
-}
-
-//Updating timer
-function updateTimer() {
-  const delta = userSelectedDate.getTime() - Date.now();
-
-  if (delta <= 0) {
-    clearInterval(countdown);
-    countdown = null;
-    refs.inputDate.disabled = false;
-    return;
-  }
-
-  const { days, hours, minutes, seconds } = convertMs(delta);
-
-  //Changing online display countdown
-  refs.outputDays.textContent = addLeadingZero(days);
-  refs.outputHours.textContent = addLeadingZero(hours);
-  refs.outputMinutes.textContent = addLeadingZero(minutes);
-  refs.outputSeconds.textContent = addLeadingZero(seconds);
 }
 
 //Adding zeroes for proper displaying
