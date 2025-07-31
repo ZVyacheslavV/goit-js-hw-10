@@ -23,6 +23,7 @@ const countdown = {
     refs.startBtn.disabled = true;
     refs.inputDate.disabled = true;
 
+    //Internal function, one countdown step
     const tick = () => {
       const delta = this.userSelectedDate - Date.now();
 
